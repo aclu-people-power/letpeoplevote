@@ -2,12 +2,12 @@
 
 {% block content %}
 {% autoescape off %}
-
-{% set statequery=request.GET.state %}
+{% load assign %}
+{% assign statequery=request.GET.state %}
 {% if statequery !='' %}
-{% set lpvstate=statequery %}
+{% assign lpvstate=statequery %}
 {% else %}
-{% set lpvstate=user.state %}
+{% assign lpvstate=user.state %}
 {% endif %}
 <!DOCTYPE html>
 <html>
