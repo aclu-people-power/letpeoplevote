@@ -1,182 +1,185 @@
-{% extends "./wrapper.html" %}
 {% load actionkit_tags %}
 
 {% block content %}
 {% autoescape off %}
-<img alt="" width="0" height="0" src="https://ms.clicks.actions.aclu.org/conversion?version=1&conversion_items=1&conversion_value=0" />
 
-<form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
-    <input type="hidden" name="page" value="{{ page.name }}">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ACLU People Power</title>
+	
+	<meta charset="utf-8">
 
-{% if actionkit_user %}
-    {% if recurring_update or recurring_cancel %}
-        <div class="ak-grid-row">
-            <div class="ak-grid-col ak-grid-col-12-of-12">
-                <p>
-                    {% filter ak_text:"logged_in_as" %}You are logged in as{% endfilter %} {{ actionkit_user.name }}.
-                    <a href="/logout">{% filter ak_text:"logout" %}Click to log out.{% endfilter %}</a>
-                </p>
-            </div>
-        </div>
-    {% endif %}
-{% endif %}
+	<!-- Search Engine -->
+	<meta name="description" content="">
+	<meta name="image" content="">
+	<!-- Schema.org for Google -->
+	<meta itemprop="name" content="">
+	<meta itemprop="description" content="">
+	<meta itemprop="image" content="">
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:site" content="">
+	<meta name="twitter:image:src" content="">
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:type" content="website">
 
-{% if page.SUPPRESS_SHARING or page.custom_fields.suppress_sharing %}
-    <div class="ak-grid-row">
-        <div class="ak-grid-col ak-grid-col-12-of-12">
-            <h2>
-                <img src="/media/modern/stance-supportive.svg" width="34" class="ak-checkmark-icon" alt="&#10003;">
-                {% filter ak_text:"noshare_thanks_banner" %}
-                Thanks!
-                {% endfilter %}
-            </h2>
-            <div>
-                {% include_tmpl form.thank_you_text %}
-            </div>
-        </div>
-    </div>
-{% else %}
+	<!-- Theme Color for Chrome, Firefox and Opera Mobile -->
+	<meta name="theme-color" content="#86FAE8">
 
-<div class="banding-black">
-<div class="ak-grid-row">
-        <div class="ak-grid-col ak-grid-col-12-of-12">
-            <h2>
-                {% if page.followup.send_taf and args.taf %}
-                    {% filter ak_text:"tell_your_friends_banner" %}
-                    Now take the next step.
-                    {% endfilter %}
-                {% else %}
-                    {% filter ak_text:"notaf_thanks_banner" %}
-                    Now take the next step.
-                    {% endfilter %}
-                {% endif %}
-            </h2>
-        </div>
-</div> <!-- .ak-grid-row -->
-</div> <!-- .banding-black -->
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<!-- Normalize.css -->
+	<link rel="stylesheet" type="text/css" href="https://peoplepower.org/drafting/normalize.css">
+	<!-- Action Kit Styles -->
+	<link rel="stylesheet" type="text/css" href="https://peoplepower.org/drafting/actionkit.css">
+	<!-- Main Styles -->
+	<link rel="stylesheet" type="text/css" href="https://peoplepower.org/drafting/styles.css">
+	<!-- Local Styles -->
+	<style type="text/css">
+		html { background: #231F20; }
+	</style>
 
-    <div class="ak-grid-row">
-		<div class="ak-grid-col ak-grid-col-6-of-12">	
-            <div>
-                {% include_tmpl form.thank_you_text %}
-            </div>
-            {% include "./progress_meter.html" %}
-        </div>
+	<!-- Support for Mobile Screens -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <div class="ak-grid-col ak-grid-col-6-of-12">
+	<!-- Favicon -->
+	<link rel="icon" href="favicon.ico">
 
-<div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
-<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
-<!--
-<div class="thanks-share-getmap"><a class="buttonA3 icon-mapmarker" href="https://map.peoplepower.org/#zipcode={{ action.user.zip|urlencode }}&distance=20&sort=distance&f%5B%5D=launch" target="_blank"><span class="box"><span class="icon"></span>Find an Event</a></span></div>
-            -->
+	<!-- Google Analytics -->
 
-            {% if page.followup.send_taf and args.taf %}
-<div class="thanks-share-email"><a class="buttonA3 icon-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank"><span class="box"><span class="icon"></span>{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a></span></div>
+	<!-- Facebook Pixel Code -->
 
-                <div id="copy-and-paste">
-                    <p class="ak-normal">Or copy and paste the text below into an email message:</p>
-                    <textarea class="ak-share-message" readonly>Subject: {{ page.title }}
-{% filter referring_akid:akid|tag_links:"source=taf" %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}
-                    </textarea>
-                </div>
-                <input type="hidden" value="{{ page.canonical_url }}"> <a href="/share/link?as_text=1&amp;type=ot&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank" style="display: none"></a>
+	<!-- Twitter universal website tag code -->
 
-                <div id="ak-confirmation">
-                    {% filter ak_text:"taf_confirmation" %}Sent!  If you like, you can send more messages below.{% endfilter %}
-                </div><!--akconfirmation-->
+	<!-- Action Kit Init -->
+	<script type="text/javascript">
+	 actionkit.forms.contextRoot = 'http://yourgroup.actionkit.com/context/';
+	  actionkit.forms.initPage();
+	  actionkit.forms.initForm('act')
+	</script>
 
-                <div id="taf-preview" class="taf-preview last ak-percent-full ak-padding-left-none ak-hidden-mobile">
+</head>
+<body class="state-page">
+	<img class="state-logo" src="https://peoplepower.org/drafting/img/logo.svg" />
+	<hr />
+	<div class="spacer"></div>
+	<hr />
+	<div class="state-flex">
+		<div id="state-flex-left">
+			<h1>Join the campaign to let people vote in Texas</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales, lectus quis varius mattis, sem neque malesuada elit, id porta nulla leo in erat. Mauris cursus dui est, sed elementum mi ultrices a. Praesent eget nibh iaculis, feugiat sapien eu, dapibus dui. Maecenas massa arcu, feugiat ac justo ut, suscipit ultricies urna. Etiam quis arcu lacinia nisi feugiat aliquam. Aliquam laoreet tellus in hendrerit viverra. Suspendisse suscipit urna urna, eget bibendum mi gravida eget.</p>
+			<p>Suspendisse elit ipsum, venenatis id purus et, malesuada sollicitudin tellus. Aliquam erat volutpat. Sed in vestibulum sem, non imperdiet libero. Sed in magna a nisi dictum tempus. Quisque congue, arcu non interdum auctor, nibh lorem mollis odio, id vulputate lacus erat eu libero. Praesent congue, sapien a vulputate lacinia, diam massa volutpat velit, at tristique lacus magna quis odio. Vivamus semper placerat placerat. Integer ornare dignissim semper. Sed quis neque felis. Proin sed velit est. Etiam pellentesque nibh at dapibus suscipit. Mauris id luctus lectus. Nulla facilisi. Fusce eu porttitor libero, sit amet finibus diam. Suspendisse tincidunt ex in sem ultricies varius fringilla in nibh.</p>
+			<div class="state-full-plan">
+				<a href=""><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in Texas</a>
+			</div>
+			<div class="action-network state-action-network">
+				<script>
+				console.log("The load_remember_me snippet for Remember Me is disabled by config.")
+				</script>
+				<form class="action_form" name="act" method="POST" action="https://go.peoplepower.org/act/" accept-charset="utf-8">
+				    <div class="ak-grid-row">
+				        <div id="signup-form" class="ak-grid-col ak-grid-col-6-of-12 ak-styled-fields ak-labels-overlaid ak-errs-below">
+				            <ul class="compact" id="ak-errors"></ul>
+				            <div id="known_user">
+				                Not <span id="known_user_name"></span>? <a href="https://go.peoplepower.org?" onclick="return actionkit.forms.logOut()">Click here.</a>
+				            </div>
+				            <div id="unknown_user" class="ak-user-form">
+				            	<div id="ak-fieldbox-first_name" class="required">
+				            	    <input type="text" name="first_name" id="id_first_name" class="ak-userfield-input" placeholder="First Name *">
+				            	</div>
+				            	<div id="ak-fieldbox-last_name" class="required">
+				            	    <input type="text" name="last_name" id="id_last_name" class="ak-userfield-input" placeholder="Last Name *">
+				            	</div>
+				            	<div id="ak-fieldbox-mobile_phone" class="required">
+				            	    <input type="text" name="mobile_phone" id="id_mobile_phone" class="ak-userfield-input" placeholder="Phone *">
+				            	</div>
+				            	<div id="ak-fieldbox-zip" class="required">
+				            	    <input type="text" name="zip" id="id_zip" class="ak-userfield-input" placeholder="Zip *">
+				            	</div>
+				                <div id="ak-fieldbox-email" class="required">
+				                    <input type="text" name="email" id="id_email" class="ak-userfield-input" placeholder="Email *">
+				                </div>
+				                <input type="hidden" name="country" value="United States">
+				            </div>
+				            <button type="submit" class="full">Join the Movement</button>
+				        </div>
+				    </div>
+				    <input type="hidden" name="page" value="join_lpv">
+				</form>
+			</div>
+		</div>
+		<div id="state-flex-right">
+			<div class="state-action-item">
+				<h2>Take Action Now</h2>
+				<p>Ask your state's legislators to pass Legislative Bill 232 now to protect voting rights in Texas.</p>
+				<a href="">Call your legislators now</a>
+			</div>
+			<div class="state-action-item">
+				<h2>Learn About the Campaign</h2>
+				<p>Read up on how we're fighting to let people vote in Texas.</p>
+				<a href="">Download the full Texas Plan</a>
+			</div>
+			<div class="state-action-item">
+				<h2>Find a Local Event</h2>
+				<p>The next step to 'Let People Vote' is to attend a local event with other People Power organizers.  Type in your zip code to search for events near you.</p>
+				<form action="" class="state-find-local" id="state-find-local-target">
+				  <input type="text" placeholder="Zip *" id="state-find-local-form">
+				  <input type="submit" value="Search" id="go-state-find-local-form">
+				</form>
+			</div>
+			<div class="state-action-item">
+				<h2>Host a Local Event</h2>
+				<p>Are you ready to lead the 'Let People Vote' movement in your community?  Host a local organizing event.</p>
+				<a href="">Sign up to host</a>
+			</div>
+			<div class="state-social">
+				<a href="">
+					<div class="state-social-button">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					</div>
+				</a>
+				<a href="">
+					<div class="state-social-button">
+						<i class="fa fa-twitter" aria-hidden="true"></i>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="state-banner">
+		<img src="https://peoplepower.org/drafting/img/logo.svg" alt="ACLU People Power">
+	</div>
+	<div class="state-footer">
+		<p>ACLU People Power is partnering with a broad group of national, state and local organizations and activist groups on the Let People Vote campaign. Many of the campaign’s calls to action were developed by partners, and this work will be advanced hand-in-hand with organizations such as the League of Women Voters, Common Cause, Kentuckians For The Commonwealth, Voice of the Experienced (VOTE), Restore the Vote Coalition, the NAACP, Nebraskans for Civic Reform; Latino American Commission, the Bus Project, MoveOn, Keystone Votes Coalition, Utahns for Responsive Government, Citizen Action of Wisconsin, and many, many others.</p>
+		<a href="">&copy; 2017 ACLU People Power &mdash; www.aclu.org</a>
+	</div>
+	
 
-                    <p class="ak-normal ak-align-right">
-                        <a class="ak-emailalt" href="#" for="id_taf_body">{% filter ak_field_label:"taf_preview" %}<span>Or, send a message using our site</span>{% endfilter %}<span class="ak-arrow-holder" style="display: none;"><span class="ak-arrow-inline"></span></span></a>
-                    </p>
+	<!-- Initialize jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+	<!-- Call Main JS File -->
+	<script src="https://peoplepower.org/drafting/js/main.js" type="text/javascript" charset="utf-8"></script>
+	<!-- ACLU Map Search -->
+	<script type="text/javascript">
+	  $(document).ready(function() {
+	      $('#state-find-local-form').change(function() {
+	        var inputZip = $('#state-find-local-form').val();
+	        $('form#state-find-local-target').attr('action', "https://map.peoplepower.org/#zipcode=" + inputZip );
+	        var searchURL = $('form#state-find-local-target').attr('action');
+	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
+	      });
+	  });
+	</script>
+</body>
+</html>
 
-                    <div id="ak-taf-form" class="ak-field-box">
-                        <div class="ak-pull-right" style="margin-bottom: -30px">
-                            <a class="ak-emailalt ak-sendemail-opened">&times;</a>
-                        </div>
-
-                        <table class="ak-message-form ak-hide ak-errs-below">
-                            <tr>
-                                <th>
-                                    <label for="id_taf_emails">
-                                        To
-                                    </label>
-                                </th>
-                                <td style="padding-right: 30px">
-                                    <textarea id="id_taf_emails" name="taf_emails" placeholder="{% filter ak_text:"taf_ask" %}Enter email addresses separated by commas{% endfilter %} "></textarea>
-                                    <input type="hidden" name="required" value="taf_emails">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <label id="lbl_taf_subject" for="id_taf_subject">Subject</label>
-                                </th>
-                                <td>
-                                    <div id="id_taf_subject" class="ak-readonly-value ak-sharebox-tafsubject">{% include_tmpl page.followup.taf_subject escaped %}</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <label for="id_taf_note">Your Note</label>
-                                </th>
-                                <td>
-                                    <textarea id="id_taf_note" name="taf_note" placeholder="Optionally add a personal comment"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <label for="id_taf_body">Message</label>
-                                </th>
-                                <td>
-                                    <div id="id_taf_body" name="taf_body" class="ak-readonly-value">{% filter referring_akid:akid|tag_links:"source=taf" %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                </th>
-                                <td>
-                                    <button type="submit" class="ak-sendmessage ak-btn-short">{% filter ak_text:"taf_send_messages" %}Send{% endfilter %}</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-
-            {% endif %}
-
-        </div>
-    </div>
-
-{% endif %}
-
-</form>
 {% endautoescape %}
-{% endblock %}
-
-{% block script_additions %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.ak-emailalt').on('click', function() {
-            $(this).parent('p').toggleClass('active');
-            $('#ak-taf-form').slideToggle(function() {
-                $('#taf_form').toggleClass('ak-closed');
-            });
-            $('#copy-and-paste').slideToggle();
-            return false;
-        });
-    });
-</script>
-{% endblock %}
-
-{% block below_form %}
-
-<script type="text/javascript">
-    actionkit.forms.contextRoot = '/context/';
-    actionkit.forms.initTafForm('taf');
-    actionkit.sharing.initShareTools();
-</script>
-
 {% endblock %}
