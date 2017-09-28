@@ -2,17 +2,12 @@
 
 {% block content %}
 {% autoescape off %}
-{% load assign %}
-{% assign statequery=request.GET.state %}
-{% if statequery !='' %}
-{% assign lpvstate=statequery %}
-{% else %}
-{% assign lpvstate=user.state %}
-{% endif %}
+{% set ga_label = 'card' %}
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ACLU People Power</title>
+	<title>ACLU People Power | {{ ga_label }}</title>
 	
 	<meta charset="utf-8">
 
