@@ -3,11 +3,11 @@
 {% block content %}
 {% autoescape off %}
 
-{% assign statequery request.GET.state %}
+{% assign statequery=request.GET.state %}
 {% if statequery !='' %}
-{% assign lpvstate request.GET.state %}
+{% assign lpvstate=statequery %}
 {% else %}
-{% assign lpvstate user.state %}
+{% assign lpvstate=user.state %}
 {% endif %}
 <!DOCTYPE html>
 <html>
