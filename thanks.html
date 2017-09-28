@@ -2,7 +2,7 @@
 
 {% block content %}
 {% autoescape off %}
-{% with user.state as lpvstate user.state_name as lpvstatename %}
+{% with lpvstate=user.state lpvstatename=user.state_name %}
 <!DOCTYPE html>
 <html>
 <head>
