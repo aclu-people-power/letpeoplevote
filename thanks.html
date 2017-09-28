@@ -78,7 +78,7 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales, lectus quis varius mattis, sem neque malesuada elit, id porta nulla leo in erat. Mauris cursus dui est, sed elementum mi ultrices a. Praesent eget nibh iaculis, feugiat sapien eu, dapibus dui. Maecenas massa arcu, feugiat ac justo ut, suscipit ultricies urna. Etiam quis arcu lacinia nisi feugiat aliquam. Aliquam laoreet tellus in hendrerit viverra. Suspendisse suscipit urna urna, eget bibendum mi gravida eget.</p>
 			<p>Suspendisse elit ipsum, venenatis id purus et, malesuada sollicitudin tellus. Aliquam erat volutpat. Sed in vestibulum sem, non imperdiet libero. Sed in magna a nisi dictum tempus. Quisque congue, arcu non interdum auctor, nibh lorem mollis odio, id vulputate lacus erat eu libero. Praesent congue, sapien a vulputate lacinia, diam massa volutpat velit, at tristique lacus magna quis odio. Vivamus semper placerat placerat. Integer ornare dignissim semper. Sed quis neque felis. Proin sed velit est. Etiam pellentesque nibh at dapibus suscipit. Mauris id luctus lectus. Nulla facilisi. Fusce eu porttitor libero, sit amet finibus diam. Suspendisse tincidunt ex in sem ultricies varius fringilla in nibh.</p>
 			<div class="state-full-plan">
-				<a href=""><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in Texas</a>
+				<a href=""><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ user.state_name|default:"your state" }}</a>
 			</div>
 			<div class="action-network state-action-network">
 				<script>
@@ -124,12 +124,12 @@
 			</div>
 			<div class="state-action-item">
 				<h2>Learn About the Campaign</h2>
-				<p>Read up on how we're fighting to let people vote in Texas.</p>
+				<p>Read up on how we're fighting to let people vote in {{ user.state_name|default:"your state" }}.</p>
 				<a href="">Download the full Texas Plan</a>
 			</div>
 			<div class="state-action-item">
 				<h2>Find a Local Event</h2>
-				<p>The next step to 'Let People Vote' is to attend a local event with other People Power organizers.  Type in your zip code to search for events near you.</p>
+				<p>The next step to 'Let People Vote' is to attend a local event with other People Power organizers. Type in your zip code to search for events near you.</p>
 				<form action="" class="state-find-local" id="state-find-local-target">
 				  <input type="text" placeholder="Zip *" id="state-find-local-form">
 				  <input type="submit" value="Search" id="go-state-find-local-form">
@@ -137,7 +137,7 @@
 			</div>
 			<div class="state-action-item">
 				<h2>Host a Local Event</h2>
-				<p>Are you ready to lead the 'Let People Vote' movement in your community?  Host a local organizing event.</p>
+				<p>Are you ready to lead the 'Let People Vote' movement in your community? Host a local organizing event.</p>
 				<a href="">Sign up to host</a>
 			</div>
 			<div class="state-social">
@@ -177,6 +177,9 @@
 	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
 	      });
 	  });
+	</script>
+	<script>
+	window.history.pushState("string", "Title", "https://vote.peoplepower.org/{{ user.state }}");
 	</script>
 </body>
 </html>
