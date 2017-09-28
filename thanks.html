@@ -2,7 +2,7 @@
 
 {% block content %}
 {% autoescape off %}
-
+{% with user.state as lpvstate user.state_name as lpvstatename %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,11 +178,12 @@
 	      });
 	  });
 	</script>
-	<!--<script>
-	window.history.pushState("string", "Title", "https://go.peoplepower.org/vote/{{ user.state }}");
-	</script>-->
+	<script>
+	window.history.pushState("string", "Title", "https://go.peoplepower.org/vote/{{ lpvstate }}");
+	</script>
 </body>
 </html>
 
+{% endwith %}
 {% endautoescape %}
 {% endblock %}
