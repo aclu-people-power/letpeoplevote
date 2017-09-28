@@ -2,10 +2,10 @@
 
 {% block content %}
 {% autoescape off %}
-{% if not request.GET.state %}
-{% with lpvstate=user.state lpvstatename=user.state_name %}
+{% if request.GET.state %}
+{% assign lpvstate request.GET.state %}
 {% else %}
-{% with lpvstate=request.GET.state %}
+{% assign lpvstate user.state %}
 {% endif %}
 <!DOCTYPE html>
 <html>
@@ -188,6 +188,5 @@
 </body>
 </html>
 
-{% endwith %}
 {% endautoescape %}
 {% endblock %}
