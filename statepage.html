@@ -1,13 +1,3 @@
-{% load actionkit_tags %}
-
-{% block content %}
-{% autoescape off %}
-
-{% with lpvstate=user.state lpvstatename=user.state_name %}
-
-{% if request.GET.state %}
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +69,7 @@
 	<hr />
 	<div class="state-flex">
 		<div id="state-flex-left">
-			<h1>Join the campaign to let people vote in {{ request.GET.state }}</h1>
+			<h1>Join the campaign to let people vote in {{ lpvstate }}</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales, lectus quis varius mattis, sem neque malesuada elit, id porta nulla leo in erat. Mauris cursus dui est, sed elementum mi ultrices a. Praesent eget nibh iaculis, feugiat sapien eu, dapibus dui. Maecenas massa arcu, feugiat ac justo ut, suscipit ultricies urna. Etiam quis arcu lacinia nisi feugiat aliquam. Aliquam laoreet tellus in hendrerit viverra. Suspendisse suscipit urna urna, eget bibendum mi gravida eget.</p>
 			<p>Suspendisse elit ipsum, venenatis id purus et, malesuada sollicitudin tellus. Aliquam erat volutpat. Sed in vestibulum sem, non imperdiet libero. Sed in magna a nisi dictum tempus. Quisque congue, arcu non interdum auctor, nibh lorem mollis odio, id vulputate lacus erat eu libero. Praesent congue, sapien a vulputate lacinia, diam massa volutpat velit, at tristique lacus magna quis odio. Vivamus semper placerat placerat. Integer ornare dignissim semper. Sed quis neque felis. Proin sed velit est. Etiam pellentesque nibh at dapibus suscipit. Mauris id luctus lectus. Nulla facilisi. Fusce eu porttitor libero, sit amet finibus diam. Suspendisse tincidunt ex in sem ultricies varius fringilla in nibh.</p>
 			<div class="state-full-plan">
@@ -188,7 +178,3 @@
 	</script>
 </body>
 </html>
-
-{% endwith %}
-{% endautoescape %}
-{% endblock %}
