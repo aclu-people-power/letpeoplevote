@@ -74,7 +74,7 @@
 		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>
 		{{ lpvstate }}
 		{% autoescape off %}
-		{{ statejson|nth:lpvstate|nth:"intro"|safe|linebreaks }}{% endautoescape %}<br>
+		{{ statejson|nth:lpvstate|nth:"intro"|autolinebreaks }}{% endautoescape %}<br>
 		
 		</p>{% endwith %}
 		
