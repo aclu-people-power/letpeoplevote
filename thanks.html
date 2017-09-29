@@ -1,12 +1,10 @@
 {% load actionkit_tags %}
-{% captureas login_url %}goodthisworks{% endcaptureas %}
 
 
 {% block content %}
 {% autoescape off %}
 {% if request.GET.state %}
     {% include 'statepage.html' with lpvstate=request.GET.state %}
-    {{login_url}}
 {% else %}
     {% include 'statepage.html' with lpvstate=user.state %}
 {% endif %}
