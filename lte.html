@@ -1,5 +1,6 @@
 {% extends "./wrapper.html" %}
 {% load actionkit_tags %}
+{% with templateset.custom_fields.statejson|load_json as statejson %}
 {% block script_additions %}
 
 <script type="text/javascript">
@@ -323,4 +324,4 @@
     %]
 </script>
 {% endblock %}
-
+{% endwith %}
