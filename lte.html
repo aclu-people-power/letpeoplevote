@@ -1,6 +1,8 @@
 {% extends "./wrapper.html" %}
 {% load actionkit_tags %}
 {% with templateset.custom_fields.statejson|load_json as statejson %}
+                {% autoescape off %}{{ statejson|nth:request.GET.state|nth:"intro"|safe }}{% endautoescape %}
+
 {% block script_additions %}
 
 <script type="text/javascript">
