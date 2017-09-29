@@ -1,5 +1,3 @@
-{% with templateset.custom_fields.statejson|load_json as statejson %}
-
 {% extends "./wrapper.html" %}
 {% load actionkit_tags %}
                 {% autoescape off %}{{ statejson|nth:request.GET.state|nth:"intro"|safe }}{% endautoescape %}
@@ -103,6 +101,8 @@
 {% block content %}
 
 {% load_remember_me %}
+
+{% with templateset.custom_fields.statejson|load_json as statejson %}
 
 <form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
@@ -315,7 +315,7 @@
 
     </div>
 </form>
-
+{% endwith %}
 <div id="na"></div>
 <script type="text/ak-template" for="na">
     [%
@@ -327,4 +327,4 @@
     %]
 </script>
 {% endblock %}
-{% endwith %}
+
