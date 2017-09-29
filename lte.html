@@ -121,7 +121,7 @@
             {% endif %}
 
             <div class="ak-styled-description ak-text-expander">
-                {% autoescape off %}{{ statejson|nth:request.GET.state|upper|nth:"intro"|safe }}{% endautoescape %}
+                {% autoescape off %}{{ statejson|nth:request.GET.state|nth:"intro"|safe }}{% endautoescape %}
             </div>
             <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
 
