@@ -22,10 +22,14 @@
             {% endif %}
 
             <div class="ak-styled-description ak-text-expander">
+              {% if lpvstate %}
                <p style="font-weight:bold;">{% autoescape off %}{{ statejson|nth:lpvstate|nth:"cta"|safe }}{% endautoescape %}</p>
                <hr>
                 {% autoescape off %}{{ statejson|nth:lpvstate|nth:"intro"|safe }}{% endautoescape %}
                 <p><a href="{{ statejson|nth:lpvstate|nth:"planlink" }}" style="font-weight: bold;">Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }} for more information and talking points.</a></p>
+                {% else %}
+                <p>Enter your information to get started sending a letter.</p>
+                {% endif %}
             </div>
             <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
 
