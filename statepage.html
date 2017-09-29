@@ -80,7 +80,7 @@
 			<h1>Join the campaign to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}</h1>
 			{% autoescape off %}{{ statejson|nth:lpvstate|nth:"intro"|safe }}{% endautoescape %}
 			<div class="state-full-plan">
-				<a href=""><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }}</a>
+				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}"><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }}</a>
 			</div>
 			<div class="action-network state-action-network">
 				<script>
@@ -127,7 +127,7 @@
 			<div class="state-action-item">
 				<h2>Learn About the Campaign</h2>
 				<p>Read up on how we're fighting to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}.</p>
-				<a href="">Download the full {{ statejson|nth:lpvstate|nth:"statename" }} Plan</a>
+				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}">Download the full {{ statejson|nth:lpvstate|nth:"statename" }} Plan</a>
 			</div>
 			<div class="state-action-item">
 				<h2>Find a Local Event</h2>
