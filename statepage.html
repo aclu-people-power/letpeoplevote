@@ -72,7 +72,7 @@
 		
 	
 		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>
-		{% select_index statejson 1 as tester %}
+		{{ statejson|split:lpvstate }}
 		{{ statejson.TX.statename }}<br>
 		{{ tester }}
 		</p>{% endwith %}
