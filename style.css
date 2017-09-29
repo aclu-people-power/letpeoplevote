@@ -2792,16 +2792,16 @@ body.ak-pagetype-event_create .clear {
 ================================================================ */
 
 .clear { width:100%;height:0;float:none;clear:both;}
-/* body { font-family: "America-Bold", sans-serif; } */
+body { font-family: "America-Regular", sans-serif; }
 h2 {
     color: #272F32;
     margin: 6px 0 2px;
-	font-family:"America-Bold";
+	font-family:"America-compBold";
 }
 h3 {
     color: #537882;
 	font-weight:400;font-size:2em;
-	font-family:"America-Bold";
+	font-family:"America-compBold";
 }
 /* Used for paragraphs */
 p {
@@ -2816,7 +2816,7 @@ p {
 	border-radius:0;
 	background-color:#EF4134;
 	color:#FFF;
-	font-family:"America-Bold";
+	font-family:"America-compBold";
 	text-transform: uppercase;
 	font-weight:500;
 	font-size:2em;
