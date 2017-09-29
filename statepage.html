@@ -1,3 +1,4 @@
+{% with templateset.custom_fields.statejson|load_json as statejson %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,19 +72,15 @@
 		<div id="state-flex-left">
 		
 	
-		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>
+		<p>
 		{{ lpvstate }}
-		{% autoescape off %}
-		{{ statejson|nth:lpvstate|nth:"intro"|safe }}{% endautoescape %}<br>
-		
-		</p>{% endwith %}
+		</p>
 		
 		
-			<h1>Join the campaign to let people vote in {{ lpvstate }}</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales, lectus quis varius mattis, sem neque malesuada elit, id porta nulla leo in erat. Mauris cursus dui est, sed elementum mi ultrices a. Praesent eget nibh iaculis, feugiat sapien eu, dapibus dui. Maecenas massa arcu, feugiat ac justo ut, suscipit ultricies urna. Etiam quis arcu lacinia nisi feugiat aliquam. Aliquam laoreet tellus in hendrerit viverra. Suspendisse suscipit urna urna, eget bibendum mi gravida eget.</p>
-			<p>Suspendisse elit ipsum, venenatis id purus et, malesuada sollicitudin tellus. Aliquam erat volutpat. Sed in vestibulum sem, non imperdiet libero. Sed in magna a nisi dictum tempus. Quisque congue, arcu non interdum auctor, nibh lorem mollis odio, id vulputate lacus erat eu libero. Praesent congue, sapien a vulputate lacinia, diam massa volutpat velit, at tristique lacus magna quis odio. Vivamus semper placerat placerat. Integer ornare dignissim semper. Sed quis neque felis. Proin sed velit est. Etiam pellentesque nibh at dapibus suscipit. Mauris id luctus lectus. Nulla facilisi. Fusce eu porttitor libero, sit amet finibus diam. Suspendisse tincidunt ex in sem ultricies varius fringilla in nibh.</p>
+			<h1>Join the campaign to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}</h1>
+			{% autoescape off %}{{ statejson|nth:lpvstate|nth:"intro"|safe }}{% endautoescape %}
 			<div class="state-full-plan">
-				<a href=""><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ user.state_name|default:"your state" }}</a>
+				<a href=""><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }}</a>
 			</div>
 			<div class="action-network state-action-network">
 				<script>
@@ -124,13 +121,13 @@
 		<div id="state-flex-right">
 			<div class="state-action-item">
 				<h2>Take Action Now</h2>
-				<p>Ask your state's legislators to pass Legislative Bill 232 now to protect voting rights in Texas.</p>
-				<a href="">Call your legislators now</a>
+				<p>{{ statejson|nth:lpvstate|nth:"cta" }}</p>
+				<a href="{{ statejson|nth:lpvstate|nth:"ctalink" }}">Call your legislators now</a>
 			</div>
 			<div class="state-action-item">
 				<h2>Learn About the Campaign</h2>
-				<p>Read up on how we're fighting to let people vote in {{ user.state_name|default:"your state" }}.</p>
-				<a href="">Download the full Texas Plan</a>
+				<p>Read up on how we're fighting to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}.</p>
+				<a href="">Download the full {{ statejson|nth:lpvstate|nth:"statename" }} Plan</a>
 			</div>
 			<div class="state-action-item">
 				<h2>Find a Local Event</h2>
@@ -164,6 +161,7 @@
 	</div>
 	<div class="state-footer">
 		<p>ACLU People Power is partnering with a broad group of national, state and local organizations and activist groups on the Let People Vote campaign. Many of the campaign’s calls to action were developed by partners, and this work will be advanced hand-in-hand with organizations such as the League of Women Voters, Common Cause, Kentuckians For The Commonwealth, Voice of the Experienced (VOTE), Restore the Vote Coalition, the NAACP, Nebraskans for Civic Reform; Latino American Commission, the Bus Project, MoveOn, Keystone Votes Coalition, Utahns for Responsive Government, Citizen Action of Wisconsin, and many, many others.</p>
+		{% autoescape off %}{{ statejson|nth:lpvstate|nth:"disclaimer"|safe }}{% endautoescape %}
 		<a href="">&copy; 2017 ACLU People Power &mdash; www.aclu.org</a>
 	</div>
 	
@@ -188,3 +186,4 @@
 	</script>-->
 </body>
 </html>
+{% endwith %}
