@@ -1,9 +1,13 @@
 {% with templateset.custom_fields.statejson|load_json as statejson %}
 
-<div class="ak-grid-row">
-    <div class="ak-grid-col ak-grid-col-12-of-12">
-        <h2>{{ page.title }}</h2>
-    </div>
+   <div class="banding-black">
+        <div class="ak-grid-row titlerow">
+            <div class="ak-grid-col ak-grid-col-12-of-12">
+                
+                    <h2>Call State Legislators</h2>
+                
+            </div>
+        </div>
 </div>
 
 <form class="ak-form ak-styled-fields" name="act" method="POST" action="/act/" accept-charset="utf-8">
