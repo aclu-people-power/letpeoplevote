@@ -130,12 +130,14 @@
                <p style="font-weight:bold;">{% autoescape off %}{{ statejson|nth:request.GET.state|nth:"cta"|safe }}{% endautoescape %}</p>
                <hr>
                 {% autoescape off %}{{ statejson|nth:request.GET.state|nth:"intro"|safe }}{% endautoescape %}
+                <p><a href="{{ statejson|nth:lpvstate|nth:"planlink" }}">Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }} for more information and talking points.</a></p>
             </div>
             <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
 
             <div id="lte-prelim"></div>
 
             <div id="ak-lte-help" class="ak-accordion"></div>
+            
             <script type="text/ak-template" for="ak-lte-help">
 
                 <ul>
