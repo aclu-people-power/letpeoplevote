@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script>
+	window.history.pushState("string", "Title", "https://vote.peoplepower.org/{{ lpvstate }}");
+	</script>
 	<title>ACLU People Power</title>
 	
 	<meta charset="utf-8">
@@ -185,9 +188,6 @@
 	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
 	      });
 	  });
-	</script>
-	<script>
-	window.history.pushState("string", "Title", "https://vote.peoplepower.org/{{ lpvstate }}");
 	</script>
 </body>
 </html>
