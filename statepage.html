@@ -70,14 +70,12 @@
 	<div class="state-flex">
 		<div id="state-flex-left">
 		
-		from django import template
-
-		register = template.Library()
-
-		@register.filter
-		def get_at_index(list, index):
-			return list[index]
-		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>{{ statejson.TX.statename }}</p>{% endwith %}
+	
+		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>
+		{% select_index statejson 1 as tester %}
+		{{ statejson.TX.statename }}<br>
+		{{ tester }}
+		</p>{% endwith %}
 		
 		
 			<h1>Join the campaign to let people vote in {{ lpvstate }}</h1>
