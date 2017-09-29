@@ -1,3 +1,4 @@
+{% with templateset.custom_fields.statejson|load_json as statejson %}
 <form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
 
@@ -219,3 +220,4 @@
 
     </div>
 </form>
+{%endwith%}
