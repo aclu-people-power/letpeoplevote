@@ -108,7 +108,7 @@
 				                </div>
 				                <input type="hidden" name="country" value="United States">
 				            </div>
-				            <button type="submit" class="full">Join the Movement</button>
+				            <button type="submit" class="full">{%if user.email %}Sign up to volunteer{%else%}Join the Movement{%endif%}</button>
 				        </div>
 				    </div>
 				    <input type="hidden" name="page" value="join_lpv">
