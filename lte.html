@@ -130,7 +130,7 @@
                <p style="font-weight:bold;">{% autoescape off %}{{ statejson|nth:request.GET.state|nth:"cta"|safe }}{% endautoescape %}</p>
                <hr>
                 {% autoescape off %}{{ statejson|nth:request.GET.state|nth:"intro"|safe }}{% endautoescape %}
-                <p><a href="{{ statejson|nth:request.GET.state|nth:"planlink" }}">Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:request.GET.state|nth:"statename" }} for more information and talking points.</a></p>
+                <p><a href="{{ statejson|nth:request.GET.state|nth:"planlink" }}" style="font-weight: bold;">Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:request.GET.state|nth:"statename" }} for more information and talking points.</a></p>
             </div>
             <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
 
