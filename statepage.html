@@ -138,8 +138,8 @@
 				<h2>Find a Local Event</h2>
 				<p>The next step to 'Let People Vote' is to attend a local event with other People Power organizers. Type in your zip code to search for events near you.</p>
 				<form action="" class="state-find-local" id="state-find-local-target">
-				  <input type="text" placeholder="Zip *" id="state-find-local-form">
-				  <input type="submit" value="Search" id="go-state-find-local-form">
+				  <input type="text" placeholder="Zip *" id="state-find-local-form"{%if user.zip %} value="{{user.zip}}" style="display:none;"{%endif%}>
+				  <input type="submit" value="{%if user.zip %}Find events near '{{user.zip}}'{%else%}Search{%endif%}" id="go-state-find-local-form">
 				</form>
 			</div>
 			<div class="state-action-item">
@@ -180,7 +180,7 @@
 	  $(document).ready(function() {
 	      $('#state-find-local-form').change(function() {
 	        var inputZip = $('#state-find-local-form').val();
-	        $('form#state-find-local-target').attr('action', "https://map.peoplepower.org/#zipcode=" + inputZip );
+	        $('form#state-find-local-target').attr('action', "https://map.peoplepower.org/#zipcode=" + {%if user.zip %}"{{user.zip}}"{%else%}inputZip{%endif%} );
 	        var searchURL = $('form#state-find-local-target').attr('action');
 	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
 	      });
