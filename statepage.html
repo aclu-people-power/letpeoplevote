@@ -71,7 +71,7 @@
 		<div id="state-flex-left">
 		
 		
-		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>{{ statejson.TX }}</p>{% endwith %}
+		{% with templateset.custom_fields.statejson|load_json as statejson %}<p>{{ statejson.TX.statename }}</p>{% endwith %}
 		
 		
 			<h1>Join the campaign to let people vote in {{ lpvstate }}</h1>
