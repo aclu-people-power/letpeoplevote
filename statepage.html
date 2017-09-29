@@ -119,7 +119,7 @@
 			<div class="state-action-item">
 				<h2>Take Action Now</h2>
 				<p>{{ statejson|nth:lpvstate|nth:"cta" }}</p>
-				<a href="{{ statejson|nth:lpvstate|nth:"ctalink" }}">{% if statejson|nth:lpvstate|nth:"bucket" == "CSL" %}Call your legislators now{% elif statejson|nth:lpvstate|nth:"bucket" == "CLO" %}Call local officials now{% elif statejson|nth:lpvstate|nth:"bucket" == "CSO" %}Call state officials now{% else statejson|nth:lpvstate|nth:"bucket" == "LTE" %}Write a letter to the editor{% endif %}</a>
+				<a href="{{ statejson|nth:lpvstate|nth:"ctalink" }}">{% if statejson|nth:lpvstate|nth:"bucket" = "CSL" %}Call your legislators now{% elif statejson|nth:lpvstate|nth:"bucket" = "CLO" %}Call local officials now{% elif statejson|nth:lpvstate|nth:"bucket" = "CSO" %}Call state officials now{% else statejson|nth:lpvstate|nth:"bucket" = "LTE" %}Write a letter to the editor{% endif %}</a>
 			</div>
 			<div class="state-action-item">
 				<h2>Learn About the Campaign</h2>
