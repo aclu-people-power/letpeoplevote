@@ -1,8 +1,8 @@
 {% extends "./wrapper.html" %}
 {% load actionkit_tags %}
+    {% with lpvstate=request.GET.state  %}
 
 {% block script_additions %}
-    {% with lpvstate=request.GET.state  %}
 
 <script type="text/javascript">
     function toggleChooser(on) {
@@ -324,5 +324,6 @@
     }
     %]
 </script>
-{% endwith %}
 {% endblock %}
+{% endwith %}
+
