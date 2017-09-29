@@ -122,7 +122,7 @@
 			<div class="state-action-item">
 				<h2>Take Action Now</h2>
 				<p>{{ statejson|nth:lpvstate|nth:"cta" }}</p>
-				<a href="{{ statejson|nth:lpvstate|nth:"ctalink" }}">
+				<a href="{{ statejson|nth:lpvstate|nth:"ctalink" }}?akid={{ akid }}&state={{ lpvstate }}">
 				{% if statejson|nth:lpvstate|nth:"bucket" = "CSL" %}
 				Call your legislators now
 				{% elif statejson|nth:lpvstate|nth:"bucket" = "CLO" %}
