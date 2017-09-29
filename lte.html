@@ -1,7 +1,5 @@
 {% extends "./wrapper.html" %}
 {% load actionkit_tags %}
-    {% with lpvstate=request.GET.state  %}
-{{ lpvstate }}
 {% block script_additions %}
 
 <script type="text/javascript">
@@ -107,7 +105,7 @@
 
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
-            <h2>Write a Letter to the Editor {{ lpvstate }}</h2>
+            <h2>Write a Letter to the Editor {{ request.GET.state }}</h2>
         </div>
     </div>
 
@@ -325,5 +323,4 @@
     %]
 </script>
 {% endblock %}
-{% endwith %}
 
