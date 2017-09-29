@@ -139,7 +139,7 @@
 				<p>The next step to 'Let People Vote' is to attend a local event with other People Power organizers. Type in your zip code to search for events near you.</p>
 				<form action="{%if user.zip %}https://map.peoplepower.org/#zipcode={{ user.zip }}&eventType=votingRights{%endif%}" class="state-find-local" id="state-find-local-target">
 				  <input type="text" placeholder="Zip *" id="state-find-local-form"{%if user.zip %} value="{{user.zip}}" style="display:none;"{%endif%}>
-				  <input type="submit" value="{%if user.zip %}Find events near &lsquo;{{user.zip}}&rsquo;{%else%}Search{%endif%}" id="go-state-find-local-form"{%if user.zip %} style="width:100%;float:none;clear:both;"{%endif%}>
+				  <input type="submit" value="{%if user.zip %}Search events near &lsquo;{{user.zip}}&rsquo;{%else%}Search{%endif%}" id="go-state-find-local-form"{%if user.zip %} style="width:100%;float:none;clear:both;"{%endif%}>
 				</form>
 			</div>
 			<div class="state-action-item">
