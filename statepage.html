@@ -193,7 +193,7 @@
         var handle_success = function(form) {
             // Let user know that it's done
 
-            button.addClass('btn-success').val('Thanks for signing up!');
+            button.addClass('btn-success').val('Thanks for signing up!').unbind();
 			
             setTimeout(function() {
                 button.removeClass('btn-success').addClass('btn-primary').val(sign_up_text);
