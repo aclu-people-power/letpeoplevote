@@ -86,7 +86,7 @@
 				<script>
 				console.log("The load_remember_me snippet for Remember Me is disabled by config.")
 				</script>
-				<form class="action_form" name="act" method="POST" action="https://go.peoplepower.org/act/" accept-charset="utf-8">
+				<form class="action_form" name="act" id="signup-form" method="POST" action="https://go.peoplepower.org/act/" accept-charset="utf-8">
 				    <div class="ak-grid-row">
 				        <div id="signup-form" class="ak-grid-col ak-grid-col-6-of-12 ak-styled-fields ak-labels-overlaid ak-errs-below">
 				            <ul class="compact" id="ak-errors"></ul>
@@ -111,7 +111,7 @@
 				                </div>
 				                <input type="hidden" name="country" value="United States">
 				            </div>
-				            <button type="submit" class="full">{%if user.email %}Sign up to volunteer{%else%}Join the Movement{%endif%}</button>
+				            <button type="submit" class="full btn">{%if user.email %}Sign up to volunteer{%else%}Join the Movement{%endif%}</button>
 				        </div>
 				    </div>
 				    <input type="hidden" name="page" value="join_lpv">
@@ -188,6 +188,61 @@
 	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
 	      });
 	  });
+$(document).ready(function() {
+    actionkit.forms.contextRoot = 'https://go.peoplepower.org/context/';
+    actionkit.forms.initPage();
+    actionkit.forms.initForm('act');
+
+    // I'll admit. Not the cleanest way but it'll work!
+    $('#signup-form').submit(function(e) {
+        var form = $(e.target);
+        var button = form.find('input.btn');
+        var sign_up_text = button.val();
+        var handle_success = function(form) {
+            // Let user know that it's done
+
+            button.addClass('btn-success').val('Thanks for signing up!');
+            setTimeout(function() {
+                button.removeClass('btn-success').addClass('btn-primary').val(sign_up_text);
+            }, 5000);
+            // Reset the form for next submission
+            form.trigger('reset');
+        };
+        var handle_failure = function(form) {
+            // Let user know that it failed
+            // Keep the form as is for resubmission
+            button.addClass('btn-warning').val('Error. Try again?');
+            setTimeout(function() {
+                button.removeClass('btn-warning').addClass('btn-primary').val(sign_up_text);
+            }, 5000);
+        };
+
+        if (!form.hasClass('contains-errors')) {
+            e.preventDefault();
+            form.find('input.btn').removeClass('btn-primary').val('Processing...');
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(),
+                dataType: "jsonp",
+                success: function(data, textStatus, jqXHR) {
+                    if (data.result == "success") {
+                        // Form submitted!
+                        handle_success(form);
+                    } else {
+                        // Handle error
+                        handle_failure(form);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Handle error
+                    handler_failure(form);
+                }
+            });
+        }
+    });
+
+});
 	</script>
 </body>
 </html>
