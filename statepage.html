@@ -137,7 +137,7 @@
 			<div class="state-action-item">
 				<h2>Find a Local Event</h2>
 				<p>The next step to 'Let People Vote' is to attend a local event with other People Power organizers. Type in your zip code to search for events near you.</p>
-				<form action="{%if user.zip %}https://map.peoplepower.org/#zipcode={{ user.zip }}&eventType=votingRights{%endif%}" class="state-find-local" id="state-find-local-target">
+				<form action="{%if user.zip %}https://map.peoplepower.org/#zipcode={{ user.zip }}&eventType=votingRights&source=lpv_{{lpvstate}}{%endif%}" class="state-find-local" id="state-find-local-target">
 				  <input type="text" placeholder="Zip *" id="state-find-local-form"{%if user.zip %} value="{{user.zip}}" style="display:none;"{%endif%}>
 				  <input type="submit" value="{%if user.zip %}Search events near &lsquo;{{user.zip}}&rsquo;{%else%}Search{%endif%}" id="go-state-find-local-form"{%if user.zip %} style="width:100%;float:none;clear:both;"{%endif%}>
 				</form>
@@ -145,7 +145,7 @@
 			<div class="state-action-item">
 				<h2>Host a Local Event</h2>
 				<p>Are you ready to lead the 'Let People Vote' movement in your community? Host a local organizing event.</p>
-				<a href="">Sign up to host</a>
+				<a href="https://go.peoplepower.org/signup/host_new?source=lpv_{{lpvstate}}">Sign up to host</a>
 			</div>
 			<div class="state-social">
 				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ lpvstate }}&source=share">
@@ -182,7 +182,7 @@
 	        var inputZip = $('#state-find-local-form').val();
 	        $('form#state-find-local-target').attr('action', "https://map.peoplepower.org/#zipcode=" + {%if user.zip %}"{{user.zip}}"{%else%}inputZip{%endif%} );
 	        var searchURL = $('form#state-find-local-target').attr('action');
-	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
+	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights&source=lpv_{{lpvstate}}");
 	      });
 
     // I'll admit. Not the cleanest way but it'll work!
