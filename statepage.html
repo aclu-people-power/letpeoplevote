@@ -107,7 +107,8 @@
 				                </div>
 				                <input type="hidden" name="country" value="United States">
 				            </div>
-				            <button type="submit" class="full btn btn-primary">{%if user.email %}Sign up to volunteer{%else%}Join the Movement{%endif%}</button>
+				                                            <input class="btn btn-primary btn-block" type="submit" value="{%if user.email %}Sign up to volunteer{%else%}Join the Movement{%endif%}">
+
 				        </div>
 				    </div>
 				    <input type="hidden" name="page" value="join_lpv">
@@ -183,8 +184,7 @@
 	        var searchURL = $('form#state-find-local-target').attr('action');
 	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
 	      });
-	  });
-$(document).ready(function() {
+
     actionkit.forms.contextRoot = 'https://go.peoplepower.org/context/';
     actionkit.forms.initPage();
     actionkit.forms.initForm('act');
