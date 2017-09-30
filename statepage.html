@@ -82,37 +82,43 @@
 				<script>
 				console.log("The load_remember_me snippet for Remember Me is disabled by config.")
 				</script>
-				<form class="action_form" name="act" id="signup-form" method="POST" action="https://go.peoplepower.org/act/" accept-charset="utf-8">
-				    <div class="ak-grid-row">
-				        <div id="signup-form" class="ak-grid-col ak-grid-col-6-of-12 ak-styled-fields ak-labels-overlaid ak-errs-below">
-				            <ul class="compact" id="ak-errors"></ul>
-				            <div id="known_user">
-				                Not <span id="known_user_name"></span>? <a href="https://go.peoplepower.org?" onclick="return actionkit.forms.logOut()">Click here.</a>
-				            </div>
-				            <div id="unknown_user" class="ak-user-form">
-				            	<div id="ak-fieldbox-first_name" class="required">
-				            	    <input type="text" name="first_name" id="id_first_name" autocomplete="given-name" class="ak-userfield-input" placeholder="First Name *">
-				            	</div>
-				            	<div id="ak-fieldbox-last_name" class="required">
-				            	    <input type="text" name="last_name" id="id_last_name" class="ak-userfield-input" placeholder="Last Name *">
-				            	</div>
-				            	<div id="ak-fieldbox-mobile_phone" class="required">
-				            	    <input type="text" name="mobile_phone" id="id_mobile_phone" class="ak-userfield-input" placeholder="Phone *">
-				            	</div>
-				            	<div id="ak-fieldbox-zip" class="required">
-				            	    <input type="text" name="zip" id="id_zip" class="ak-userfield-input" placeholder="Zip *"{%if user.zip %} value="{{user.zip}}"{%endif%}>
-				            	</div>
-				                <div id="ak-fieldbox-email" class="required">
-				                    <input type="text" name="email" id="id_email" class="ak-userfield-input" placeholder="Email *"{%if user.email %} value="{{user.email}}"{%endif%}>
-				                </div>
-				                <input type="hidden" name="country" value="United States">
-				            </div>
-				                                            <input class="btn btn-primary btn-block full" type="submit" value="{%if user.email %}Sign up to volunteer{%else%}Join the Movement{%endif%}">
-
-				        </div>
-				    </div>
-				    <input type="hidden" name="page" value="join_lpv">
-				</form>
+				  <form name="act" id="signup-form" method="post" action="https://go.peoplepower.org/act/">
+                    <div id="join-us-form">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 form-group">
+                                <label for="email">Email</label>
+                                <input id="email" class="form-control" type="text" name="email" placeholder="Email" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
+                                <label for="first-name">First Name</label>
+                                <input id="first-name" class="form-control" type="text" name="first_name" placeholder="First Name" required />
+                            </div>
+                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
+                                <label for="last-name">Last Name</label>
+                                <input id="last-name" class="form-control" type="text" name="last_name" placeholder="Last Name" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
+                                <label for="zip">Zip Code</label>
+                                <input id="zip" class="form-control" type="text" name="zip" placeholder="Zip Code" required />
+                            </div>
+                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
+                                <label for="phone-number">Phone Number</label>
+                                <input id="phone-number" class="form-control" type="text" name="mobile_phone" placeholder="Phone Number" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="hidden" name="country" value="United States" />
+                                <input type="hidden" name="page" value="join_people_power">
+                                <input class="btn btn-primary btn-block" type="submit" value="JOIN THE MOVEMENT">
+                            </div>
+                        </div>
+                    </div>
+                </form>
 			</div>
 		</div>
 		<div id="state-flex-right">
