@@ -185,10 +185,6 @@
 	        $('form#state-find-local-target').attr('action', searchURL + "&eventType=votingRights");
 	      });
 
-    actionkit.forms.contextRoot = 'https://go.peoplepower.org/context/';
-    actionkit.forms.initPage();
-    actionkit.forms.initForm('act');
-
     // I'll admit. Not the cleanest way but it'll work!
     $('#signup-form').submit(function(e) {
         var form = $(e.target);
