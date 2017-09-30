@@ -201,7 +201,9 @@
             }, 5000);
             // Reset the form for next submission
             form.trigger('reset');
+			$('#unknown_user').slideUp('100');
         };
+		
         var handle_failure = function(form) {
             // Let user know that it failed
             // Keep the form as is for resubmission
