@@ -9,15 +9,16 @@ Tes
 
 {%else%}
 
-{% block content %}
-{% autoescape off %}
-{% if request.GET.state %}
-    {% include 'statepage.html' with lpvstate=request.GET.state %}
-{% else %}
-    {% include 'statepage.html' with lpvstate=user.state %}
-{% endif %}
+	{% block content %}
+	{% autoescape off %}
+		{% if request.GET.state %}
+			{% include 'statepage.html' with lpvstate=request.GET.state %}
+		{% else %}
+			{% include 'statepage.html' with lpvstate=user.state %}
+		{% endif %}
 
-{% endautoescape %}
-{% endblock %}
+	{% endautoescape %}
+	{% endblock %}
 
+{%endif%}
 
