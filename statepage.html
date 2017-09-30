@@ -194,9 +194,10 @@
             // Let user know that it's done
 
             button.addClass('btn-success').val('Thanks for signing up!');
-			$('#signup-form').slideUp("100"));
+			
             setTimeout(function() {
                 button.removeClass('btn-success').addClass('btn-primary').val(sign_up_text);
+				
             }, 5000);
             // Reset the form for next submission
             form.trigger('reset');
