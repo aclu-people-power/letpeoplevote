@@ -78,7 +78,7 @@
 			<div class="state-full-plan">
 				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}"><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }}</a>
 				{% if statejson|nth:lpvstate|nth:"espanol" %}
-				<br><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Ve/Descarga la Programa de Acción para {% if statejson|nth:lpvstate|nth:"statename"|length < 11 %}{{ statejson|nth:lpvstate|nth:"statename" }}{% else %}{{ lpvstate }}{% endif %} en Español</a>
+				<br><br><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Ve/Descarga la Programa de Acción para {% if statejson|nth:lpvstate|nth:"statename"|length < 11 %}{{ statejson|nth:lpvstate|nth:"statename" }}{% else %}{{ lpvstate }}{% endif %} en Español</a>
 				{% endif %}
 			</div>
 			<div class="action-network state-action-network">
@@ -139,7 +139,7 @@
 				<p>Read up on how we're fighting to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}.</p>
 				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}">Download the full {% if statejson|nth:lpvstate|nth:"statename"|length < 11 %}{{ statejson|nth:lpvstate|nth:"statename" }}{% else %}{{ lpvstate }}{% endif %} Plan</a>
 				{% if statejson|nth:lpvstate|nth:"espanol" %}
-				<p><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Descarga la Programa en Español</a></p>
+				<br><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Descarga la Programa en Español</a>
 				{% endif %}
 			</div>
 			<div class="state-action-item">
