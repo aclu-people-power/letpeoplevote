@@ -139,7 +139,7 @@
 				<p>Read up on how we're fighting to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}.</p>
 				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}">Download the full {% if statejson|nth:lpvstate|nth:"statename"|length < 11 %}{{ statejson|nth:lpvstate|nth:"statename" }}{% else %}{{ lpvstate }}{% endif %} Plan</a>
 				{% if statejson|nth:lpvstate|nth:"espanol" %}
-				<a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Descarga la Programa en Español</a>
+				<p><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Descarga la Programa en Español</a></p>
 				{% endif %}
 			</div>
 			<div class="state-action-item">
