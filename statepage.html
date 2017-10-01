@@ -116,6 +116,7 @@
 			</div>
 		</div>
 		<div id="state-flex-right">
+		{% if lpvstate = "TN" %}
 			<div class="state-action-item">
 				<h2>Take Action Now</h2>
 				<p>{{ statejson|nth:lpvstate|nth:"cta" }}</p>
@@ -129,6 +130,7 @@
 				{% else %}
 				Write a letter to the editor{% endif %}</a>
 			</div>
+		{%endif%}
 			<div class="state-action-item">
 				<h2>Learn About the Campaign</h2>
 				<p>Read up on how we're fighting to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}.</p>
