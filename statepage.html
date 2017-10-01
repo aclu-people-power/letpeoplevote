@@ -116,7 +116,7 @@
 			</div>
 		</div>
 		<div id="state-flex-right">
-		{% if lpvstate = "TN" %}
+		{% if not lpvstate = "TN" %}
 			<div class="state-action-item">
 				<h2>Take Action Now</h2>
 				<p>{{ statejson|nth:lpvstate|nth:"cta" }}</p>
