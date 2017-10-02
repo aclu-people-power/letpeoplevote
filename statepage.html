@@ -77,13 +77,13 @@
 		
 			<h1>Join the campaign to let people vote in {{ statejson|nth:lpvstate|nth:"statename" }}</h1>
 			{% autoescape off %}{{ statejson|nth:lpvstate|nth:"intro"|safe }}{% endautoescape %}
-			<div class="state-full-plan">
+			<div class="state-full-plan" style="margin: 30px 0 10px 30px;">
 				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}"><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }}</a>
 				{% if statejson|nth:lpvstate|nth:"espanol" %}
 				<br><br><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Ve/Descarga la Programa de Acción para {% if statejson|nth:lpvstate|nth:"statename"|length < 11 %}{{ statejson|nth:lpvstate|nth:"statename" }}{% else %}{{ lpvstate }}{% endif %} en Español</a>
 				{% endif %}
 				</div>
-							<div class="state-full-plan">
+							<div class="state-full-plan" style="margin: 0px 0 30px 30px;">
 								<p id="videoplay"><i class="fa fa-youtube-play" aria-hidden="true"></i><a href="#">Watch the "Let People Vote" live stream launch</a></p>
 								<br>
 
