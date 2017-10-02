@@ -84,7 +84,7 @@
 				{% endif %}<br><br>
 								<p id="videoplay"><a href="#">Watch the "Let People Vote" live stream launch</a></p>
 								<br>
-				<div id="videodiv" style="width:100%;height:315px;display:none;"><iframe id="videoframe"  style="width:100%;" height="315" data-src="https://www.youtube-nocookie.com/embed/sVRMxE3PK-U?rel=0" frameborder="0" src="about:blank" allowfullscreen></iframe></div>
+				<div id="videodiv" style="width:100%;height:315px;display:none;"><iframe id="videoframe" style="width:100%;" height="315" frameborder="0" src="about:blank" allowfullscreen></iframe></div>
 
 			</div>
 			<div class="action-network state-action-network">
@@ -209,7 +209,7 @@
 
 		  		$('#videoplay').on('click', function() {
 				   $('#videodiv').show();
-					$('#videoframe').attr("src", ('#videoframe').data("src"));
+					$('#videoframe').attr("src", "https://www.youtube-nocookie.com/embed/sVRMxE3PK-U?rel=0");
 				});
 		  });
     // I'll admit. Not the cleanest way but it'll work!
