@@ -81,12 +81,15 @@
 				<a href="{{ statejson|nth:lpvstate|nth:"planlink" }}"><i class="fa fa-download" aria-hidden="true"></i>Download the full plan for the "Let People Vote" campaign in {{ statejson|nth:lpvstate|nth:"statename" }}</a>
 				{% if statejson|nth:lpvstate|nth:"espanol" %}
 				<br><br><a href="{{ statejson|nth:lpvstate|nth:"espanol" }}">Ve/Descarga la Programa de Acción para {% if statejson|nth:lpvstate|nth:"statename"|length < 11 %}{{ statejson|nth:lpvstate|nth:"statename" }}{% else %}{{ lpvstate }}{% endif %} en Español</a>
-				{% endif %}<br><br>
-								<p id="videoplay"><a href="#">Watch the "Let People Vote" live stream launch</a></p>
+				{% endif %}
+				</div>
+							<div class="state-full-plan">
+								<p id="videoplay"><i class="fa fa-youtube-play" aria-hidden="true"></i><a href="#">Watch the "Let People Vote" live stream launch</a></p>
 								<br>
-				<div id="videodiv" style="width:100%;height:315px;display:none;"><iframe id="videoframe" style="width:100%;" height="315" frameborder="0" src="about:blank" allowfullscreen></iframe></div>
 
 			</div>
+							<div id="videodiv" style="width:100%;height:315px;display:none;"><iframe id="videoframe" style="width:100%;" height="315" frameborder="0" src="about:blank" allowfullscreen></iframe></div>
+
 			<div class="action-network state-action-network">
 				<script>
 				console.log("The load_remember_me snippet for Remember Me is disabled by config.")
