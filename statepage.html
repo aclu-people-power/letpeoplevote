@@ -154,9 +154,11 @@
 				Call your legislators now
 				{% elif statejson|nth:lpvstate|nth:"bucket" = "CLO" %}
 				Call local officials now
+				{% elif statejson|nth:lpvstate|nth:"bucket" = "LET" %}
+				Write a letter
 				{% elif statejson|nth:lpvstate|nth:"bucket" = "CSO" %}
 				Call state officials now
-				{% else %}Write a letter{% endif %}</a>
+				{% else %}Write a letter to the editor{% endif %}</a>
 			</div>
 		{%endif%}
 			<div class="state-action-item">
