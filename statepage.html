@@ -176,15 +176,15 @@ a.modal-button:focus {
 </head>
 <body class="state-page">
 
-{% if lpvstate = "TX" %}
+{% if statejson|nth:lpvstate|nth:"modalname" %}
 	<div id="modal-div" class="visible">
 		<div id="modal-body">
 			<div id="close-modal">
 				<i class="fa fa-times" aria-hidden="true"></i>
 			</div>
-			<h2>Texas Let People Vote Campaign Update Call</h2>
-			<h3>Thursday 10/12/17 at 5 pm PT / 8 pm ET</h3>
-			<a class="modal-button" href="http://myaccount.maestroconference.com/conference/register/KQ1C7K57T7O2GH1N">Register Here</a>
+			<h2>{{ statejson|nth:lpvstate|nth:"modalname" }}</h2>
+			<h3>{{ statejson|nth:lpvstate|nth:"modaltime" }}</h3>
+			<a class="modal-button" href="{{ statejson|nth:lpvstate|nth:"modallink" }}">Register Here</a>
 		</div>
 	</div>
 {% endif %}
