@@ -176,7 +176,7 @@ a.modal-button:focus {
 </head>
 <body class="state-page">
 
-{% if statejson|nth:lpvstate|nth:"modalname" %}
+{% if lpvstate = "TX" %}
 	<div id="modal-div" class="visible">
 		<div id="modal-body">
 			<div id="close-modal">
