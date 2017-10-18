@@ -12,9 +12,18 @@
 	{% block content %}
 	{% autoescape off %}
 		{% if request.GET.state %}
-			{% include 'statepage.html' with lpvstate=request.GET.state %}
-		{% else %}
-			{% include 'statepage.html' with lpvstate=user.state %}
+			{% if request.GET.source %}
+				{% include 'statepage.html' with lpvstate=request.GET.state source=request.GET.source %}
+			{% else %}
+				{% include 'statepage.html' with lpvstate=request.GET.state %}
+			{% endif %}
+		{% else %}			
+			{% if request.GET.source %}
+				{% include 'statepage.html' with lpvstate=user.state source=request.GET.source %}
+			{% else %}
+				{% include 'statepage.html' with lpvstate=user.state %}
+			{% endif %}	
+			
 		{% endif %}
 
 	{% endautoescape %}
