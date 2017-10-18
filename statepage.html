@@ -250,6 +250,7 @@ a.modal-button:focus {
 				        </div>
 				    </div>
 				    <input type="hidden" name="page" value="join_lpv">
+				    <input type="hidden" name="source" value="{% if source %}{{source}}{% else %}lpv_{{ lpvstate }}{% endif %}">
 				</form>
 			</div>
 		</div>
